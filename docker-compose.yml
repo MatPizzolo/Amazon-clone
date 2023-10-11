@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    environment:
+      - MONGO_DATABASE="amazon"
+      - ME_CONFIG_BASICAUTH_USERNAME=admin  # Set the MongoDB Express admin username
+      - ME_CONFIG_BASICAUTH_PASSWORD=secret  # Set the MongoDB Express admin password
+    ports:
+      - 27017:27017
+  
+  mongo-express:
+    container_name: mongo-express
+    image: mongo-express
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo
+      - ME_CONFIG_MONGODB_PORT=27017
+      - ME_CONFIG_BASICAUTH_USERNAME=admin  # Set the MongoDB Express admin username
+      - ME_CONFIG_BASICAUTH_PASSWORD=secret  # Set the MongoDB Express admin password
+    depends_on:
+      - mongo
+    ports:
+      - 8081:8081
+
+  

@@ -9,7 +9,10 @@ import { UserService } from 'src/user/user.service';
 
 @Injectable()
 export class AuthService {
-	constructor(private UserService: UserService, private jwtService: JwtService) { }
+	constructor(
+		private UserService: UserService,
+		private jwtService: JwtService
+	) {}
 
 	async hashPassword(password: string): Promise<string> {
 		return bcrypt.hash(password, 12);
@@ -42,7 +45,7 @@ export class AuthService {
 
 	async login(existingUser: ExistingUserDTO): Promise<{ token: string } | null> {
 		const { email, password } = existingUser;
-		const user = this.validateUser(email, password);
+		const user = await this.validateUser(email, password);
 		if (!user)
 			throw new HttpException('Credentials invalid', HttpStatus.UNAUTHORIZED);
 		const jwt = await this.jwtService.signAsync({user});

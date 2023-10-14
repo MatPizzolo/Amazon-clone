@@ -11,10 +11,11 @@ const HomePage = () => {
   const logoutHandler = () => {
     dispatch(logout());
   }
+
   return (
     <AuthLayout>
       <Typography variant="h2">Home Page</Typography>
-      <Button onClick={logoutHandler} variant="outlined">Logout</Button>
+      {/* <Button onClick={logoutHandler} variant="outlined">Logout</Button> */}
       <Typography variant="h4">{user?.email}</Typography>
     </AuthLayout>
   )

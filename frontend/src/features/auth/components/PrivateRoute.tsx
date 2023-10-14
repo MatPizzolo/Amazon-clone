@@ -4,7 +4,7 @@ import { verifyJwt } from '../authSlice';
 import { Navigate } from 'react-router-dom';
 
 const PrivateRoute = ({ page }: { page: JSX.Element }) => {
-	const { isSuccess, jwt, isAuthenticated } = useAppSelector((state) => state.auth);
+	const { isSuccess, isAuthenticated, jwt } = useAppSelector((state) => state.auth);
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {

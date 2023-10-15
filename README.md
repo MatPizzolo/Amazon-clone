@@ -87,7 +87,7 @@ Project Link: [https://github.com/MatPizzolo/Simply-Recipes](https://github.com/
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[product-screenshot]: src/assets/images/web-screenshot.png
+[product-screenshot]: screen.png
 
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/

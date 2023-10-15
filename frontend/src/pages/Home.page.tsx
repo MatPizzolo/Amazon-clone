@@ -1,24 +1,43 @@
-import React from 'react'
-import AuthLayout from '../features/auth/components/AuthLayout'
-import { Button, Typography } from '@mui/material'
-import { useAppDispatch, useAppSelector } from '../hooks/redux/hooks'
-import { logout } from '../features/auth/authSlice'
+import { useEffect } from 'react';
+import HeaderComponent from '../features/products/components/Header.component';
+import ProductComponent from '../features/products/components/Product.component';
+import { getProducts } from '../features/products/productSlice';
+import { useAppDispatch, useAppSelector } from '../hooks/redux/hooks';
+import Footer from '../commons/Footer/Footer';
+import { Box } from '@mui/material';
 
 const HomePage = () => {
-  const dispatch = useAppDispatch();
-	const { user } = useAppSelector((state) => state.auth);
+	const dispatch = useAppDispatch();
 
-  const logoutHandler = () => {
-    dispatch(logout());
-  }
+	const { cart, products } = useAppSelector((state) => state.product);
 
-  return (
-    <AuthLayout>
-      <Typography variant="h2">Home Page</Typography>
-      {/* <Button onClick={logoutHandler} variant="outlined">Logout</Button> */}
-      <Typography variant="h4">{user?.email}</Typography>
-    </AuthLayout>
-  )
-}
+	useEffect(() => {
+		dispatch(getProducts());
+	}, []);
 
-export default HomePage
+	return (
+		<div>
+			<HeaderComponent />
+			<div
+				style={{
+					display: 'flex',
+					flexWrap: 'wrap',
+					gap: '48px',
+					justifyContent: 'center',
+					alignItems: 'center',
+					marginTop: '48px',
+					marginBottom: '48px',
+				}}
+			>
+				{products.length > 0 &&
+					products.map((product) => (
+						<ProductComponent key={product._id} product={product} />
+					))}
+			</div>
+			<Box mt={16} />
+			<Footer />
+		</div>
+	);
+};
+
+export default HomePage;

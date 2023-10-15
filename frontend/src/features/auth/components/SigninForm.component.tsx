@@ -43,7 +43,7 @@ const SigninFormComponent: FC = () => {
 			clearForm();
 		}
 	}, [isSuccess, dispatch])
-	
+
 	useEffect(() => {
 		if (!isAuthenticated)
 			return;
@@ -80,7 +80,9 @@ const SigninFormComponent: FC = () => {
 						<InputLabel sx={{ fontWeight: 500, marginTop: 1, color: "black" }} htmlFor="password"> Your password</InputLabel>
 						<TextField value={password} onChange={passwordChangeHandler} onBlur={passwordBlurHandler} error={passwordHasError} helperText={passwordHasError ? "Min 6 characters" : ""} type="password" name="password" id="password" variant="outlined" size="small" placeholder='Minimum 6 characters required ' />
 
-						<Button variant="contained" type="submit" style={{ marginTop: "16px", height: "31px", backgroundColor: "#f0c14b", color: "black", borderColor: "#a88734 #9c7e31 #846a29", textTransform: "none" }}>Sign-In</Button>
+						<Button 
+							disabled={!validatePasswordLength(password) || !validateEmail(email)}
+							variant="contained" type="submit" style={{ marginTop: "16px", height: "31px", backgroundColor: "#f0c14b", color: "black", borderColor: "#a88734 #9c7e31 #846a29", textTransform: "none" }}>Sign-In</Button>
 					</Grid>
 				</form>
 

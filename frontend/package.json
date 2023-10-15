@@ -43,6 +43,8 @@
   },
   "devDependencies": {
     "@mui/material": "^5.14.13",
-    "@types/react-dom": "^18.2.13"
+    "@types/jest": "^29.5.5",
+    "@types/react-dom": "^18.2.13",
+    "cypress": "^13.3.1"
   }
 }

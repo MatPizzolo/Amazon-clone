@@ -9,6 +9,8 @@
     <img src="./frontend/public/amazon-logo.png" alt="Logo" width="180" height="80">
   </a>
 
+  <br/>
+
 [![es](https://img.shields.io/badge/lang-es-yellow.svg)](https://github.com/MatPizzolo/Amazon-clone)
 
   <p align="center">
